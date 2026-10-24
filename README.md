@@ -6,6 +6,10 @@ Dashboard ejecutivo en Power BI para una inmobiliaria con operación en Ciudad d
 
 [Documentación completa del proyecto](documentacion.md) · [Descargar el dashboard (.pbix)](dashboard_andes_capital.pbix)
 
+## Contexto y objetivo
+
+Andes Capital vende casas, departamentos y locales comerciales a través de corredores y de su canal directo. La dirección tenía los datos de ventas de dos años, pero no una vista única para saber qué genera los ingresos, si el negocio crece y si los clientes vuelven a comprar. El objetivo es un dashboard que responda esas preguntas en tres páginas y sirva de base para decidir dónde enfocar el esfuerzo comercial.
+
 ## Preguntas de negocio
 
 - **Desempeño general:** ingreso total, propiedades vendidas, precio promedio y comisión total.
@@ -27,6 +31,18 @@ Dashboard ejecutivo en Power BI para una inmobiliaria con operación en Ciudad d
 
 *Análisis de Cohortes. Cada fila es el mes de primera compra; los valores a la derecha de la diagonal son clientes que vuelven a comprar. Las cohortes de 2024 son mucho más pequeñas.*
 
+## KPIs
+
+| KPI | Definición |
+|---|---|
+| Ingreso total | Suma de `precio_venta` |
+| Propiedades vendidas | Conteo de ventas |
+| Precio promedio | Ingreso total entre propiedades vendidas |
+| Comisión total | Suma de `monto_comision` |
+| Crecimiento YoY | Ingreso del periodo frente al mismo periodo del año anterior (`SAMEPERIODLASTYEAR`) |
+| Ingreso YTD | Acumulado del año (`TOTALYTD`) |
+| Participación % | Ingreso de una categoría sobre el total (`CALCULATE` con `ALL`) |
+
 ## Hallazgos
 
 | Tema | Hallazgo |
@@ -45,6 +61,12 @@ Dashboard ejecutivo en Power BI para una inmobiliaria con operación en Ciudad d
 3. Reactivar la captación de nuevos clientes y replicar con las cohortes recientes lo que funcionó con las de inicios de 2023.
 4. Desarrollar una oferta para el segmento Inversionista y revisar la propuesta de valor para Alto patrimonio.
 5. Planificar campañas antes de las temporadas altas y acciones para sostener la venta en los meses bajos.
+
+### Limitaciones
+
+- Las cohortes de 2024 llevan menos meses de observación que las de 2023, así que parte de la diferencia en ventas acumuladas se explica por el tiempo y no solo por el comportamiento de los clientes.
+- El dataset no incluye costos ni gastos, por lo que el dashboard mide ingresos y comisiones, no rentabilidad.
+- La moneda no está especificada en los datos; los montos se presentan como vienen en la fuente.
 
 ## Cómo se construyó
 
@@ -66,7 +88,7 @@ dashboard_andes_capital/
 └── README.md
 ```
 
-Para explorar el dashboard, descarga el archivo `.pbix` y ábrelo con Power BI Desktop. Los datos son un caso de estudio del bootcamp de Análisis de Datos de TripleTen.
+Para explorar el dashboard, descarga el archivo `.pbix` y ábrelo con Power BI Desktop. Los datos son un caso de estudio ficticio del bootcamp de Análisis de Datos de TripleTen: no corresponden a una empresa real.
 
 ## Herramientas
 
